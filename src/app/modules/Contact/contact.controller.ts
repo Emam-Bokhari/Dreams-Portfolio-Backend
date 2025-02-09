@@ -25,7 +25,20 @@ const getAllContactsController = asyncHandler(async (req, res) => {
     })
 })
 
+const getContactController = asyncHandler(async (req, res) => {
+    const id = req.params.id;
+    const contact = await ContactServices.getContactById(id);
+
+    sendResponse(res, {
+        success: true,
+        statusCode: 200,
+        message: "Contact is retrieved successfully",
+        data: contact,
+    })
+})
+
 export const ContactControllers = {
     createContactController,
     getAllContactsController,
+    getContactController,
 }
