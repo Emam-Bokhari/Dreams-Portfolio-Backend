@@ -47,9 +47,22 @@ const updateBlogController = asyncHandler(async (req, res) => {
     })
 })
 
+const deleteBlogController = asyncHandler(async (req, res) => {
+    const id = req.params.id;
+    await BlogServices.deleteBlogById(id);
+
+    sendResponse(res, {
+        success: true,
+        statusCode: 200,
+        message: "Blog is deleted successfully",
+        data: {}
+    })
+})
+
 export const BlogControllers = {
     createBlogController,
     getAllBlogsController,
     getBlogController,
     updateBlogController,
+    deleteBlogController,
 }
