@@ -23,7 +23,19 @@ const getAllProjectsController = asyncHandler(async (req, res) => {
     })
 })
 
+const getProjectController = asyncHandler(async (req, res) => {
+    const id = req.params.id;
+    const project = await ProjectServices.getProjectById(id);
+    sendResponse(res, {
+        success: true,
+        statusCode: 200,
+        message: "Project is retrieving successfully",
+        data: project,
+    })
+})
+
 export const ProjectControllers = {
     createProjectController,
     getAllProjectsController,
+    getProjectController,
 }
