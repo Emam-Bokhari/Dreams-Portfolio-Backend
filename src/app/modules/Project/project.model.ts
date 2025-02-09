@@ -50,7 +50,6 @@ const projectSchema = new Schema<TProject>(
     frontendSourceCode: {
       type: String,
       trim: true,
-      required: true,
     },
     backendSourceCode: {
       type: String,

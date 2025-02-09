@@ -1,15 +1,25 @@
 import express from 'express';
 import { ProjectControllers } from './project.controller';
+import { validateRequestSchema } from '../../middlewares/validateRequestSchema';
+import { ProjectValidationSchema } from './project.validation';
 
 const router = express.Router();
 
-router.post('/', ProjectControllers.createProjectController);
+router.post(
+  '/',
+  validateRequestSchema(ProjectValidationSchema.createProjectValidationSchema),
+  ProjectControllers.createProjectController,
+);
 
 router.get('/', ProjectControllers.getAllProjectsController);
 
 router.get('/:id', ProjectControllers.getProjectController);
 
-router.patch('/:id', ProjectControllers.updateProjectController);
+router.patch(
+  '/:id',
+  validateRequestSchema(ProjectValidationSchema.updateProjectValidationSchema),
+  ProjectControllers.updateProjectController,
+);
 
 router.delete('/:id', ProjectControllers.deleteProjectController);
 

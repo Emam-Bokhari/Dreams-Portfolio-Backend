@@ -1,9 +1,15 @@
 import express from 'express';
 import { ContactControllers } from './contact.controller';
+import { validateRequestSchema } from '../../middlewares/validateRequestSchema';
+import { ContactValidationSchema } from './contact.validation';
 
 const router = express.Router();
 
-router.post('/', ContactControllers.createContactController);
+router.post(
+  '/',
+  validateRequestSchema(ContactValidationSchema.createContactValidationSchema),
+  ContactControllers.createContactController,
+);
 
 router.get('/', ContactControllers.getAllContactsController);
 
