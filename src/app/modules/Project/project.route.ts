@@ -5,13 +5,21 @@ import { ProjectValidationSchema } from './project.validation';
 
 const router = express.Router();
 
-router.post('/', validateRequestSchema(ProjectValidationSchema.createProjectValidationSchema), ProjectControllers.createProjectController);
+router.post(
+  '/',
+  validateRequestSchema(ProjectValidationSchema.createProjectValidationSchema),
+  ProjectControllers.createProjectController,
+);
 
 router.get('/', ProjectControllers.getAllProjectsController);
 
 router.get('/:id', ProjectControllers.getProjectController);
 
-router.patch('/:id', validateRequestSchema(ProjectValidationSchema.updateProjectValidationSchema), ProjectControllers.updateProjectController);
+router.patch(
+  '/:id',
+  validateRequestSchema(ProjectValidationSchema.updateProjectValidationSchema),
+  ProjectControllers.updateProjectController,
+);
 
 router.delete('/:id', ProjectControllers.deleteProjectController);
 

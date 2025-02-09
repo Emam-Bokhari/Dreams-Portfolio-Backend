@@ -5,7 +5,11 @@ import { ContactValidationSchema } from './contact.validation';
 
 const router = express.Router();
 
-router.post('/', validateRequestSchema(ContactValidationSchema.createContactValidationSchema), ContactControllers.createContactController);
+router.post(
+  '/',
+  validateRequestSchema(ContactValidationSchema.createContactValidationSchema),
+  ContactControllers.createContactController,
+);
 
 router.get('/', ContactControllers.getAllContactsController);
 
