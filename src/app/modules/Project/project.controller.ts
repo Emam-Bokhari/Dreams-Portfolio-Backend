@@ -34,8 +34,21 @@ const getProjectController = asyncHandler(async (req, res) => {
     })
 })
 
+const updateProjectController = asyncHandler(async (req, res) => {
+    const id = req.params.id;
+    const updatedPayload = req.body;
+    const updatedProject = await ProjectServices.updateProjectById(id, updatedPayload);
+    sendResponse(res, {
+        success: true,
+        statusCode: 200,
+        message: "Project is updated successfully",
+        data: updatedProject,
+    })
+})
+
 export const ProjectControllers = {
     createProjectController,
     getAllProjectsController,
     getProjectController,
+    updateProjectController,
 }
