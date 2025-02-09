@@ -14,10 +14,7 @@ app.use(cors());
 app.use('/api/v1', router);
 
 app.get('/', (req, res) => {
-  res.json({
-    server: 'Server is running...',
-    time: new Date().toLocaleString('en-US', { timeZone: 'Asia/Dhaka' }),
-  });
+  res.send("Server is running")
 });
 
 // global error handler
