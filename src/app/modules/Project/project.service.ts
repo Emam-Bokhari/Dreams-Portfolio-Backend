@@ -31,9 +31,18 @@ const updateProjectById = async (id: string, payload: Partial<TProject>) => {
     return updatedProject;
 }
 
+const deleteProjectById = async (id: string) => {
+    const deletedProject = await Project.findOneAndUpdate({ _id: id, isDeleted: false }, { isDeleted: true }, { new: true });
+    if (!deletedProject) {
+        throw new HttpError(404, "The requested project could not be found.")
+    }
+    return deletedProject;
+}
+
 export const ProjectServices = {
     createProject,
     getAllProjects,
     getProjectById,
     updateProjectById,
+    deleteProjectById,
 }
