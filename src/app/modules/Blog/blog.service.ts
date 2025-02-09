@@ -8,7 +8,7 @@ const createBlog = async (payload: TBlog) => {
 };
 
 const getAllBlogs = async (limit: string) => {
-  const query = limit ? Blog.find().limit(Number(limit)) : Blog.find()
+  const query = limit ? Blog.find().limit(Number(limit)) : Blog.find();
   const blogs = await query;
 
   if (blogs.length === 0) {
