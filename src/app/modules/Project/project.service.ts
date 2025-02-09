@@ -15,7 +15,16 @@ const getAllProjects = async () => {
     return projects;
 }
 
+const getProjectById = async (id: string) => {
+    const project = await Project.findById(id);
+    if (!project) {
+        throw new HttpError(404, "The requested project could not be found.")
+    }
+    return project;
+}
+
 export const ProjectServices = {
     createProject,
     getAllProjects,
+    getProjectById,
 }
