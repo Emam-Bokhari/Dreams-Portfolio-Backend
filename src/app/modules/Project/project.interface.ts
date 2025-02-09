@@ -19,4 +19,5 @@ export type TProject = {
     versionControlAndDeployment?: string;
     projectTimeline?: string;
     caseStudy?: string;
+    isDeleted?: boolean;
 }

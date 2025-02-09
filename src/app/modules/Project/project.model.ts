@@ -86,6 +86,10 @@ const projectSchema = new Schema<TProject>({
     caseStudy: {
         type: String,
         trim: true,
+    },
+    isDeleted: {
+        type: Boolean,
+        default: false,
     }
 },
     {
