@@ -20,6 +20,10 @@ const contactSchema = new Schema<TContact>({
         type: String,
         trim: true,
         required: true,
+    },
+    isDeleted: {
+        type: Boolean,
+        default: false,
     }
 },
     {

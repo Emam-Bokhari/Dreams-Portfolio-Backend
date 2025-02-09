@@ -3,4 +3,5 @@ export type TContact = {
     email: string;
     phone?: string;
     message: string;
+    isDeleted?: boolean;
 }
