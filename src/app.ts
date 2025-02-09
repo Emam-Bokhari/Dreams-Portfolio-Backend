@@ -1,6 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import router from './app/routes';
+import { globalErrorHandler } from './app/middlewares/globalErrorHandler';
+import notFound from './app/errors/notFound';
 
 const app = express();
 
@@ -17,5 +19,11 @@ app.get('/', (req, res) => {
     time: new Date().toLocaleString('en-US', { timeZone: 'Asia/Dhaka' }),
   });
 });
+
+// global error handler
+app.use(globalErrorHandler);
+
+// not found handler
+app.use(notFound);
 
 export default app;
