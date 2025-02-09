@@ -7,4 +7,5 @@ export type TBlog = {
     introduction: string;
     mainContent: string;
     tags?: string[];
+    isDeleted?: boolean;
 }

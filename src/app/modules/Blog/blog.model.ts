@@ -39,6 +39,10 @@ const blogSchema = new Schema<TBlog>({
     },
     tags: {
         type: [String],
+    },
+    isDeleted: {
+        type: Boolean,
+        default: false
     }
 },
     {

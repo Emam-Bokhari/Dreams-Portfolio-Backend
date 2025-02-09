@@ -25,8 +25,18 @@ const getBlogById = async (id: string) => {
     return blog;
 }
 
+const updateBlogById = async (id: string, payload: Partial<TBlog>) => {
+    const updatedBlog = await Blog.findOneAndUpdate({ _id: id, isDeleted: false }, payload, { new: true, runValidators: true })
+
+    if (!updatedBlog) {
+        throw new HttpError(404, "The requested blog could not be found.")
+    }
+    return updatedBlog;
+}
+
 export const BlogServices = {
     createBlog,
     getAllBlogs,
     getBlogById,
+    updateBlogById,
 }
