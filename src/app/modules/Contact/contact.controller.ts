@@ -2,7 +2,7 @@ import { asyncHandler } from "../../utils/global/asyncHandler";
 import { sendResponse } from "../../utils/global/sendResponse";
 import { ContactServices } from "./contact.service";
 
-const createContact = asyncHandler(async (req, res) => {
+const createContactController = asyncHandler(async (req, res) => {
     const contactPayload = req.body;
     const createdContact = await ContactServices.createContact(contactPayload);
 
@@ -14,6 +14,18 @@ const createContact = asyncHandler(async (req, res) => {
     })
 })
 
+const getAllContactsController = asyncHandler(async (req, res) => {
+    const contacts = await ContactServices.getAllContacts();
+
+    sendResponse(res, {
+        success: true,
+        statusCode: 200,
+        message: "Contacts are retrieved successfully",
+        data: contacts,
+    })
+})
+
 export const ContactControllers = {
-    createContact,
+    createContactController,
+    getAllContactsController,
 }
