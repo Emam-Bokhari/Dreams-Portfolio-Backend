@@ -1,5 +1,6 @@
 import { model, Schema } from "mongoose";
 import { TBlog } from "./blog.interface";
+import { excludeDeletedAggregation, excludeDeletedQuery } from "../../utils/moduleSpecific/queryFilter";
 
 const blogSchema = new Schema<TBlog>({
     title: {
@@ -50,5 +51,12 @@ const blogSchema = new Schema<TBlog>({
         versionKey: false
     }
 );
+
+// query middleware for soft delete by utils
+blogSchema.pre("find", excludeDeletedQuery);
+blogSchema.pre("findOne", excludeDeletedQuery);
+
+// aggregate middleware for soft delete by utils
+blogSchema.pre("aggregate", excludeDeletedAggregation)
 
 export const Blog = model<TBlog>("Blog", blogSchema);
