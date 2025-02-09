@@ -37,8 +37,21 @@ const getContactController = asyncHandler(async (req, res) => {
     })
 })
 
+const deleteContactController = asyncHandler(async (req, res) => {
+    const id = req.params.id;
+    const deletedContact = await ContactServices.deleteContactById(id);
+
+    sendResponse(res, {
+        success: true,
+        statusCode: 200,
+        message: "Contact is deleted successfully",
+        data: deletedContact,
+    })
+})
+
 export const ContactControllers = {
     createContactController,
     getAllContactsController,
     getContactController,
+    deleteContactController,
 }
