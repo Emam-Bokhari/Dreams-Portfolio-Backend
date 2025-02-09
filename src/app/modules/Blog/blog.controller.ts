@@ -23,7 +23,19 @@ const getAllBlogsController = asyncHandler(async (req, res) => {
     })
 })
 
+const getBlogController = asyncHandler(async (req, res) => {
+    const id = req.params.id;
+    const blog = await BlogServices.getBlogById(id);
+    sendResponse(res, {
+        success: true,
+        statusCode: 200,
+        message: "Blog is retrieved successfully",
+        data: blog,
+    })
+})
+
 export const BlogControllers = {
     createBlogController,
     getAllBlogsController,
+    getBlogController,
 }
