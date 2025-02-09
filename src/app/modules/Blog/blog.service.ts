@@ -17,7 +17,16 @@ const getAllBlogs = async () => {
     return blogs;
 }
 
+const getBlogById = async (id: string) => {
+    const blog = await Blog.findById(id);
+    if (!blog) {
+        throw new HttpError(404, "The requested blog could not be found.")
+    }
+    return blog;
+}
+
 export const BlogServices = {
     createBlog,
     getAllBlogs,
+    getBlogById,
 }
