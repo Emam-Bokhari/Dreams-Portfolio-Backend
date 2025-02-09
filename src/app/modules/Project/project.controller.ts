@@ -48,12 +48,12 @@ const updateProjectController = asyncHandler(async (req, res) => {
 
 const deleteProjectController = asyncHandler(async (req, res) => {
     const id = req.params.id;
-    const deletedProject = await ProjectServices.deleteProjectById(id);
+    await ProjectServices.deleteProjectById(id);
     sendResponse(res, {
         success: true,
         statusCode: 200,
         message: "Project is deleted successfully",
-        data: deletedProject,
+        data: {},
     })
 })
 

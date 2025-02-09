@@ -1,5 +1,6 @@
 import { model, Schema } from "mongoose";
 import { TProject } from "./project.interface";
+import { excludeDeletedAggregation, excludeDeletedQuery } from "../../utils/moduleSpecific/queryFilter";
 
 const projectSchema = new Schema<TProject>({
     title: {
@@ -97,5 +98,12 @@ const projectSchema = new Schema<TProject>({
         timestamps: true
     }
 )
+
+// query middleware for soft delete by utils
+projectSchema.pre("find", excludeDeletedQuery);
+projectSchema.pre("findOne", excludeDeletedQuery);
+
+// aggregate middleware for soft delete by utils
+projectSchema.pre("aggregate", excludeDeletedAggregation)
 
 export const Project = model<TProject>("Project", projectSchema);
