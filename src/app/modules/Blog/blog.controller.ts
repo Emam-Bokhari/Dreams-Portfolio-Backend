@@ -14,7 +14,8 @@ const createBlogController = asyncHandler(async (req, res) => {
 });
 
 const getAllBlogsController = asyncHandler(async (req, res) => {
-  const blogs = await BlogServices.getAllBlogs();
+  const { limit } = req.query;
+  const blogs = await BlogServices.getAllBlogs(limit as string);
   sendResponse(res, {
     success: true,
     statusCode: 200,

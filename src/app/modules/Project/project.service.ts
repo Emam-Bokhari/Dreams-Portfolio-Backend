@@ -7,8 +7,9 @@ const createProject = async (payload: TProject) => {
   return createdProject;
 };
 
-const getAllProjects = async () => {
-  const projects = await Project.find();
+const getAllProjects = async (limit: string) => {
+  const query = limit ? Project.find().limit(Number(limit)) : Project.find();
+  const projects = await query;
   if (projects.length === 0) {
     throw new HttpError(404, 'Projects were not found in the database');
   }

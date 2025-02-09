@@ -7,8 +7,9 @@ const createBlog = async (payload: TBlog) => {
   return createdBlog;
 };
 
-const getAllBlogs = async () => {
-  const blogs = await Blog.find();
+const getAllBlogs = async (limit: string) => {
+  const query = limit ? Blog.find().limit(Number(limit)) : Blog.find()
+  const blogs = await query;
 
   if (blogs.length === 0) {
     throw new HttpError(404, 'Blogs were not found in the database');

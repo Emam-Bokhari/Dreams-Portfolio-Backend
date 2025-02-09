@@ -14,7 +14,8 @@ const createProjectController = asyncHandler(async (req, res) => {
 });
 
 const getAllProjectsController = asyncHandler(async (req, res) => {
-  const projects = await ProjectServices.getAllProjects();
+  const { limit } = req.query;
+  const projects = await ProjectServices.getAllProjects(limit as string);
   sendResponse(res, {
     success: true,
     statusCode: 200,
