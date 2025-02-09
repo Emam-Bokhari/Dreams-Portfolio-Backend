@@ -34,8 +34,22 @@ const getBlogController = asyncHandler(async (req, res) => {
     })
 })
 
+const updateBlogController = asyncHandler(async (req, res) => {
+    const id = req.params.id;
+    const updatedPayload = req.body;
+    const updatedBlog = await BlogServices.updateBlogById(id, updatedPayload);
+
+    sendResponse(res, {
+        success: true,
+        statusCode: 200,
+        message: "Blog is updated successfully",
+        data: updatedBlog,
+    })
+})
+
 export const BlogControllers = {
     createBlogController,
     getAllBlogsController,
     getBlogController,
+    updateBlogController,
 }
