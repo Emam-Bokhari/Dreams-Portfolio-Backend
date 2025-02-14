@@ -29,10 +29,10 @@ const getFeaturedProjectController = asyncHandler(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: 200,
-    message: "Featured projects are retrieving successfully",
-    data: featuredProject
-  })
-})
+    message: 'Featured projects are retrieving successfully',
+    data: featuredProject,
+  });
+});
 
 const getProjectController = asyncHandler(async (req, res) => {
   const id = req.params.id;

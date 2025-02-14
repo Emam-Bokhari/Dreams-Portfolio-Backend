@@ -32,25 +32,24 @@ var __awaiter =
       step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
   };
-var __importDefault =
-  (this && this.__importDefault) ||
-  function (mod) {
-    return mod && mod.__esModule ? mod : { default: mod };
-  };
 Object.defineProperty(exports, '__esModule', { value: true });
-const mongoose_1 = __importDefault(require('mongoose'));
-const app_1 = __importDefault(require('./app'));
-const config_1 = __importDefault(require('./app/config'));
-function main() {
-  return __awaiter(this, void 0, void 0, function* () {
-    try {
-      yield mongoose_1.default.connect(config_1.default.database_url);
-      app_1.default.listen(config_1.default.port, () => {
-        console.log(`Server is running on port: ${config_1.default.port}`);
+exports.DashboardControllers = void 0;
+const asyncHandler_1 = require('../../utils/global/asyncHandler');
+const sendResponse_1 = require('../../utils/global/sendResponse');
+const dashboard_service_1 = require('./dashboard.service');
+const getDashboardDataController = (0, asyncHandler_1.asyncHandler)(
+  (req, res) =>
+    __awaiter(void 0, void 0, void 0, function* () {
+      const data =
+        yield dashboard_service_1.DashboardServices.getDashboardData();
+      (0, sendResponse_1.sendResponse)(res, {
+        success: true,
+        message: 'Dashboard data is retrieved successfully',
+        statusCode: 200,
+        data: data,
       });
-    } catch (err) {
-      console.log(err);
-    }
-  });
-}
-main();
+    }),
+);
+exports.DashboardControllers = {
+  getDashboardDataController,
+};

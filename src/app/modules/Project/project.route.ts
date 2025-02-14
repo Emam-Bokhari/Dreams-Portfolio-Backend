@@ -13,7 +13,10 @@ router.post(
 
 router.get('/', ProjectControllers.getAllProjectsController);
 
-router.get('/featured-project', ProjectControllers.getFeaturedProjectController);
+router.get(
+  '/featured-project',
+  ProjectControllers.getFeaturedProjectController,
+);
 
 router.get('/:id', ProjectControllers.getProjectController);
 

@@ -16,7 +16,7 @@ app.use(cors({ origin: ['http://localhost:3000'], credentials: true }));
 app.use('/api/v1', router);
 
 app.get('/', (req, res) => {
-  res.send("Server is running")
+  res.send('Server is running');
 });
 
 // global error handler

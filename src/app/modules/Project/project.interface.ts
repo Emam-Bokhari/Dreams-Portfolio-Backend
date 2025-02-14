@@ -17,5 +17,4 @@ export type TProject = {
   projectTimeline?: string;
   isFeatured?: boolean;
   isDeleted?: boolean;
-
 };

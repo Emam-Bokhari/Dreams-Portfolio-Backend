@@ -18,7 +18,7 @@ const createProjectValidationSchema = z.object({
     challengesFaced: z.string().optional(),
     solution: z.string().optional(),
     keyFeatures: z.array(
-      z.string()
+      z.string(),
       // .min(5, 'Each key feature must be at least 5 characters long'),
     ),
     liveLink: z.string(),
@@ -26,7 +26,6 @@ const createProjectValidationSchema = z.object({
     backendSourceCode: z.string().optional(),
     apiDocumentation: z.string().optional(),
     projectGoals: z.string().optional(),
-
 
     futureImprovements: z.string().optional(),
     securityConsiderations: z.string().optional(),
@@ -54,7 +53,7 @@ const updateProjectValidationSchema = z.object({
 
     technologiesUsed: z
       .array(
-        z.string()
+        z.string(),
         // .min(3, 'Technology name must be at least 3 characters long'),
       )
       .optional(),
@@ -62,8 +61,7 @@ const updateProjectValidationSchema = z.object({
     solution: z.string().optional(),
     keyFeatures: z
       .array(
-        z
-          .string()
+        z.string(),
         // .min(5, 'Each key feature must be at least 5 characters long'),
       )
       .optional(),
@@ -72,7 +70,6 @@ const updateProjectValidationSchema = z.object({
     backendSourceCode: z.string().optional(),
     apiDocumentation: z.string().optional(),
     projectGoals: z.string().optional(),
-
 
     futureImprovements: z.string().optional(),
     securityConsiderations: z.string().optional(),

@@ -19,7 +19,10 @@ const getAllProjects = async (limit: string) => {
 const getFeaturedProject = async () => {
   const featuredProject = await Project.findOne({ isFeatured: true });
   if (!featuredProject) {
-    throw new HttpError(404, 'Featured projects were not found in the database.');
+    throw new HttpError(
+      404,
+      'Featured projects were not found in the database.',
+    );
   }
   return featuredProject;
 };
