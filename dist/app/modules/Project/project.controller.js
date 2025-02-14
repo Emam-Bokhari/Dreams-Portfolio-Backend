@@ -33,6 +33,15 @@ const getAllProjectsController = (0, asyncHandler_1.asyncHandler)((req, res) => 
         data: projects,
     });
 }));
+const getFeaturedProjectController = (0, asyncHandler_1.asyncHandler)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const featuredProject = yield project_service_1.ProjectServices.getFeaturedProject();
+    (0, sendResponse_1.sendResponse)(res, {
+        success: true,
+        statusCode: 200,
+        message: "Featured projects are retrieving successfully",
+        data: featuredProject
+    });
+}));
 const getProjectController = (0, asyncHandler_1.asyncHandler)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const id = req.params.id;
     const project = yield project_service_1.ProjectServices.getProjectById(id);
@@ -67,6 +76,7 @@ const deleteProjectController = (0, asyncHandler_1.asyncHandler)((req, res) => _
 exports.ProjectControllers = {
     createProjectController,
     getAllProjectsController,
+    getFeaturedProjectController,
     getProjectController,
     updateProjectController,
     deleteProjectController,

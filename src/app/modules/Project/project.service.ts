@@ -16,6 +16,14 @@ const getAllProjects = async (limit: string) => {
   return projects;
 };
 
+const getFeaturedProject = async () => {
+  const featuredProject = await Project.findOne({ isFeatured: true });
+  if (!featuredProject) {
+    throw new HttpError(404, 'Featured projects were not found in the database.');
+  }
+  return featuredProject;
+};
+
 const getProjectById = async (id: string) => {
   const project = await Project.findById(id);
   if (!project) {
@@ -51,6 +59,7 @@ const deleteProjectById = async (id: string) => {
 export const ProjectServices = {
   createProject,
   getAllProjects,
+  getFeaturedProject,
   getProjectById,
   updateProjectById,
   deleteProjectById,

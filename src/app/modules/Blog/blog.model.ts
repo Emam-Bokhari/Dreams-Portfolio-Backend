@@ -22,12 +22,7 @@ const blogSchema = new Schema<TBlog>(
       trim: true,
       required: true,
     },
-    publishedDate: {
-      type: Date,
-      trim: true,
-      required: true,
-    },
-    authorInfo: {
+    authorName: {
       type: String,
       trim: true,
       required: true,

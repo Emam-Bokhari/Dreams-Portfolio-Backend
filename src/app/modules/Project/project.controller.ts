@@ -24,6 +24,16 @@ const getAllProjectsController = asyncHandler(async (req, res) => {
   });
 });
 
+const getFeaturedProjectController = asyncHandler(async (req, res) => {
+  const featuredProject = await ProjectServices.getFeaturedProject();
+  sendResponse(res, {
+    success: true,
+    statusCode: 200,
+    message: "Featured projects are retrieving successfully",
+    data: featuredProject
+  })
+})
+
 const getProjectController = asyncHandler(async (req, res) => {
   const id = req.params.id;
   const project = await ProjectServices.getProjectById(id);
@@ -64,6 +74,7 @@ const deleteProjectController = asyncHandler(async (req, res) => {
 export const ProjectControllers = {
   createProjectController,
   getAllProjectsController,
+  getFeaturedProjectController,
   getProjectController,
   updateProjectController,
   deleteProjectController,

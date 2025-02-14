@@ -24,6 +24,13 @@ const getAllProjects = (limit) => __awaiter(void 0, void 0, void 0, function* ()
     }
     return projects;
 });
+const getFeaturedProject = () => __awaiter(void 0, void 0, void 0, function* () {
+    const featuredProject = yield project_model_1.Project.findOne({ isFeatured: true });
+    if (!featuredProject) {
+        throw new HttpError_1.HttpError(404, 'Featured projects were not found in the database.');
+    }
+    return featuredProject;
+});
 const getProjectById = (id) => __awaiter(void 0, void 0, void 0, function* () {
     const project = yield project_model_1.Project.findById(id);
     if (!project) {
@@ -48,6 +55,7 @@ const deleteProjectById = (id) => __awaiter(void 0, void 0, void 0, function* ()
 exports.ProjectServices = {
     createProject,
     getAllProjects,
+    getFeaturedProject,
     getProjectById,
     updateProjectById,
     deleteProjectById,

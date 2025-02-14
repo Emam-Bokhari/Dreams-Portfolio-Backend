@@ -4,34 +4,36 @@ const createProjectValidationSchema = z.object({
   body: z.object({
     title: z
       .string()
-      .min(5, 'Title must be at least 5 characters long')
+      // .min(5, 'Title must be at least 5 characters long')
       .max(100, 'Title must not exceed 100 characters'),
     thumbnail: z.string(),
     description: z
       .string()
-      .min(20, 'Description must be at least 20 characters long')
+      // .min(20, 'Description must be at least 20 characters long')
       .max(1000, 'Description must not exceed 1000 characters'),
-    client: z.string().optional(),
+
     technologiesUsed: z.array(
       z.string().min(3, 'Technology name must be at least 3 characters long'),
     ),
     challengesFaced: z.string().optional(),
     solution: z.string().optional(),
     keyFeatures: z.array(
-      z.string().min(5, 'Each key feature must be at least 5 characters long'),
+      z.string()
+      // .min(5, 'Each key feature must be at least 5 characters long'),
     ),
     liveLink: z.string(),
-    frontendSourceCode: z.string().optional(),
+    frontendSourceCode: z.string(),
     backendSourceCode: z.string().optional(),
     apiDocumentation: z.string().optional(),
     projectGoals: z.string().optional(),
-    collaborationAndTeamWork: z.string().optional(),
-    userFeedback: z.string().optional(),
+
+
     futureImprovements: z.string().optional(),
     securityConsiderations: z.string().optional(),
-    versionControlAndDeployment: z.string().optional(),
-    projectTimeline: z.string().optional(),
-    caseStudy: z.string().optional(),
+
+    projectTimeline: z.string().nullable().optional(),
+
+    isFeatured: z.boolean().default(false),
     isDeleted: z.boolean().default(false),
   }),
 });
@@ -40,19 +42,20 @@ const updateProjectValidationSchema = z.object({
   body: z.object({
     title: z
       .string()
-      .min(5, 'Title must be at least 5 characters long')
+      // .min(5, 'Title must be at least 5 characters long')
       .max(100, 'Title must not exceed 100 characters')
       .optional(),
     thumbnail: z.string().optional(),
     description: z
       .string()
-      .min(20, 'Description must be at least 20 characters long')
+      // .min(20, 'Description must be at least 20 characters long')
       .max(1000, 'Description must not exceed 1000 characters')
       .optional(),
-    client: z.string().optional(),
+
     technologiesUsed: z
       .array(
-        z.string().min(3, 'Technology name must be at least 3 characters long'),
+        z.string()
+        // .min(3, 'Technology name must be at least 3 characters long'),
       )
       .optional(),
     challengesFaced: z.string().optional(),
@@ -61,7 +64,7 @@ const updateProjectValidationSchema = z.object({
       .array(
         z
           .string()
-          .min(5, 'Each key feature must be at least 5 characters long'),
+        // .min(5, 'Each key feature must be at least 5 characters long'),
       )
       .optional(),
     liveLink: z.string().optional(),
@@ -69,13 +72,14 @@ const updateProjectValidationSchema = z.object({
     backendSourceCode: z.string().optional(),
     apiDocumentation: z.string().optional(),
     projectGoals: z.string().optional(),
-    collaborationAndTeamWork: z.string().optional(),
-    userFeedback: z.string().optional(),
+
+
     futureImprovements: z.string().optional(),
     securityConsiderations: z.string().optional(),
-    versionControlAndDeployment: z.string().optional(),
-    projectTimeline: z.string().optional(),
-    caseStudy: z.string().optional(),
+
+    projectTimeline: z.string().nullable().optional(),
+
+    isFeatured: z.boolean().default(false),
     isDeleted: z.boolean().default(false),
   }),
 });

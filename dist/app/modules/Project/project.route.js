@@ -11,6 +11,7 @@ const project_validation_1 = require("./project.validation");
 const router = express_1.default.Router();
 router.post('/', (0, validateRequestSchema_1.validateRequestSchema)(project_validation_1.ProjectValidationSchema.createProjectValidationSchema), project_controller_1.ProjectControllers.createProjectController);
 router.get('/', project_controller_1.ProjectControllers.getAllProjectsController);
+router.get('/featured-project', project_controller_1.ProjectControllers.getFeaturedProjectController);
 router.get('/:id', project_controller_1.ProjectControllers.getProjectController);
 router.patch('/:id', (0, validateRequestSchema_1.validateRequestSchema)(project_validation_1.ProjectValidationSchema.updateProjectValidationSchema), project_controller_1.ProjectControllers.updateProjectController);
 router.delete('/:id', project_controller_1.ProjectControllers.deleteProjectController);

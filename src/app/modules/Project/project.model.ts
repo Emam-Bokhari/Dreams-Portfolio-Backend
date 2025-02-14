@@ -22,9 +22,10 @@ const projectSchema = new Schema<TProject>(
       trim: true,
       required: true,
     },
-    client: {
+    projectRole: {
       type: String,
       trim: true,
+      required: true,
     },
     technologiesUsed: {
       type: [String],
@@ -50,6 +51,7 @@ const projectSchema = new Schema<TProject>(
     frontendSourceCode: {
       type: String,
       trim: true,
+      required: true,
     },
     backendSourceCode: {
       type: String,
@@ -63,14 +65,6 @@ const projectSchema = new Schema<TProject>(
       type: String,
       trim: true,
     },
-    collaborationAndTeamWork: {
-      type: String,
-      trim: true,
-    },
-    userFeedback: {
-      type: String,
-      trim: true,
-    },
     futureImprovements: {
       type: String,
       trim: true,
@@ -79,17 +73,13 @@ const projectSchema = new Schema<TProject>(
       type: String,
       trim: true,
     },
-    versionControlAndDeployment: {
-      type: String,
-      trim: true,
-    },
     projectTimeline: {
       type: String,
       trim: true,
     },
-    caseStudy: {
-      type: String,
-      trim: true,
+    isFeatured: {
+      type: Boolean,
+      default: false,
     },
     isDeleted: {
       type: Boolean,

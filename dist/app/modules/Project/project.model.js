@@ -19,9 +19,10 @@ const projectSchema = new mongoose_1.Schema({
         trim: true,
         required: true,
     },
-    client: {
+    projectRole: {
         type: String,
         trim: true,
+        required: true,
     },
     technologiesUsed: {
         type: [String],
@@ -47,6 +48,7 @@ const projectSchema = new mongoose_1.Schema({
     frontendSourceCode: {
         type: String,
         trim: true,
+        required: true,
     },
     backendSourceCode: {
         type: String,
@@ -60,14 +62,6 @@ const projectSchema = new mongoose_1.Schema({
         type: String,
         trim: true,
     },
-    collaborationAndTeamWork: {
-        type: String,
-        trim: true,
-    },
-    userFeedback: {
-        type: String,
-        trim: true,
-    },
     futureImprovements: {
         type: String,
         trim: true,
@@ -76,17 +70,13 @@ const projectSchema = new mongoose_1.Schema({
         type: String,
         trim: true,
     },
-    versionControlAndDeployment: {
-        type: String,
-        trim: true,
-    },
     projectTimeline: {
         type: String,
         trim: true,
     },
-    caseStudy: {
-        type: String,
-        trim: true,
+    isFeatured: {
+        type: Boolean,
+        default: false,
     },
     isDeleted: {
         type: Boolean,
